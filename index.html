@@ -20,7 +20,7 @@
         }
 
         .hero-section {
-            min-height: 60vh;
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -69,11 +69,20 @@
             font-size: clamp(1.2rem, 3vw, 1.8rem);
             color: #e0e0e0;
             max-width: 800px;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             font-weight: 300;
             line-height: 1.4;
             opacity: 0;
             animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        .hero-description {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: #b0b0b0;
+            max-width: 600px;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.7s forwards;
         }
 
         @keyframes fadeInUp {
@@ -102,6 +111,8 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(255, 71, 87, 0.3);
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.9s forwards;
         }
 
         .cta-button::before {
@@ -124,6 +135,126 @@
             left: 100%;
         }
 
+        /* Pain Points Section */
+        .pain-points-section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .pain-points-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ff4757;
+        }
+
+        .pain-points-subtitle {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pain-points-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .pain-point {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .pain-point:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 71, 87, 0.3);
+        }
+
+        .pain-point-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pain-point h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ff4757;
+        }
+
+        .pain-point p {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(255, 71, 87, 0.05), rgba(255, 167, 38, 0.05));
+            margin: 2rem;
+            border-radius: 20px;
+        }
+
+        .solution-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .solution-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #ff4757, #ffa726);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .solution-description {
+            font-size: 1.3rem;
+            color: #cccccc;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .benefit {
+            text-align: left;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            border-left: 4px solid #ff4757;
+        }
+
+        .benefit h4 {
+            color: #ffa726;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .benefit p {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+
         .gallery-section {
             padding: 4rem 2rem;
             max-width: 1400px;
@@ -133,9 +264,16 @@
         .section-title {
             font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             color: #ffffff;
             position: relative;
+            padding-left: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #b0b0b0;
+            margin-bottom: 2rem;
             padding-left: 1rem;
         }
 
@@ -209,7 +347,7 @@
         }
 
         .video-item {
-            height: 250px;
+            height: 450px;
             border-radius: 12px;
             overflow: hidden;
             position: relative;
@@ -230,47 +368,138 @@
             border-radius: 12px;
         }
 
-        .video-controls {
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            margin: 5% auto;
+            padding: 3rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
             position: absolute;
-            bottom: 10px;
-            left: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.7);
+            right: 20px;
+            top: 20px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #ff4757;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff4757, #ffa726);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        .modal-subtitle {
+            color: #cccccc;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 8px;
-            padding: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .video-item:hover .video-controls {
-            opacity: 1;
-        }
-
-        .play-button {
-            background: #ff4757;
-            border: none;
+            background: rgba(255, 255, 255, 0.05);
             color: white;
-            border-radius: 4px;
-            padding: 0.3rem 0.6rem;
-            cursor: pointer;
-            font-size: 0.8rem;
-            transition: background 0.3s ease;
+            font-size: 1rem;
+            transition: all 0.3s ease;
         }
 
-        .play-button:hover {
-            background: #ff3838;
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #ff4757;
+            box-shadow: 0 0 0 3px rgba(255, 71, 87, 0.1);
         }
 
-        .volume-button {
-            background: transparent;
+        .form-group input::placeholder {
+            color: #888;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(45deg, #ff4757, #ff3838);
             border: none;
+            border-radius: 8px;
             color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
             cursor: pointer;
-            font-size: 0.9rem;
-            padding: 0.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 71, 87, 0.4);
+        }
+
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            color: #6bcf7f;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        .error-message {
+            display: none;
+            text-align: center;
+            color: #ff6b6b;
+            font-size: 1rem;
+            margin-top: 1rem;
         }
 
         .final-cta {
@@ -319,6 +548,15 @@
         }
 
         @media (max-width: 768px) {
+            .pain-points-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
             .gallery-container {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             }
@@ -347,6 +585,11 @@
             .final-cta-title {
                 font-size: 2rem;
             }
+
+            .modal-content {
+                margin: 10% auto;
+                padding: 2rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -357,6 +600,10 @@
             .gallery-item {
                 height: 160px;
             }
+
+            .video-item {
+                height: 250px;
+            }
         }
     </style>
 </head>
@@ -364,29 +611,105 @@
     <section class="hero-section">
         <h1 class="hero-title">Pocket Hollywood</h1>
         <p class="hero-subtitle">Create story-driven short videos, teasers, previews, and highlights for products, with the first ever AI filming Studio.</p>
-        <a href="#waitlist" class="cta-button">Join Waitlist</a>
+        <p class="hero-description">Skip the expensive crews, lengthy timelines, and creative bottlenecks. Generate professional-quality videos in minutes, not months.</p>
+        <a href="#" class="cta-button" onclick="openModal()">Join Waitlist</a>
+    </section>
+
+    <section class="pain-points-section">
+        <h2 class="pain-points-title">Video Creation Shouldn't Be This Hard</h2>
+        <p class="pain-points-subtitle">Every business needs great video content, but the traditional process is broken</p>
+        
+        <div class="pain-points-grid">
+            <div class="pain-point">
+                <div class="pain-point-icon">💰</div>
+                <h3>Expensive Production</h3>
+                <p>Professional video production costs $5,000-$50,000+ per project. Small businesses and startups can't compete with big budgets.</p>
+            </div>
+            <div class="pain-point">
+                <div class="pain-point-icon">⏰</div>
+                <h3>Slow Turnaround</h3>
+                <p>Traditional video production takes weeks or months. By the time your video is ready, your campaign moment has passed.</p>
+            </div>
+            <div class="pain-point">
+                <div class="pain-point-icon">🎭</div>
+                <h3>Limited Creative Control</h3>
+                <p>You're stuck with whatever the production team delivers. Multiple revisions cost extra and take even longer.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="solution-section">
+        <div class="solution-container">
+            <h2 class="solution-title">Meet Your AI Film Studio</h2>
+            <p class="solution-description">Pocket Hollywood puts Hollywood-quality video production in your pocket. Create unlimited videos with AI-powered characters, scenes, and storytelling.</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit">
+                    <h4>90% Cost Reduction</h4>
+                    <p>Create professional videos for the price of a coffee, not a car payment</p>
+                </div>
+                <div class="benefit">
+                    <h4>10x Faster Production</h4>
+                    <p>Go from concept to finished video in minutes, not months</p>
+                </div>
+                <div class="benefit">
+                    <h4>Unlimited Revisions</h4>
+                    <p>Perfect your video with instant AI-powered iterations</p>
+                </div>
+                <div class="benefit">
+                    <h4>No Technical Skills Required</h4>
+                    <p>Just describe your vision, and AI handles the rest</p>
+                </div>
+                <div class="benefit">
+                    <h4>Consistent Brand Quality</h4>
+                    <p>Maintain professional standards across all your content</p>
+                </div>
+                <div class="benefit">
+                    <h4>Scale Infinitely</h4>
+                    <p>Create dozens of videos for different products and campaigns</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <div class="gallery-section">
-        <h2 class="section-title">Characters</h2>
+        <h2 class="section-title">AI-Generated Characters</h2>
+        <p class="section-subtitle">Create diverse, professional actors that bring your stories to life</p>
         <div class="gallery-container">
             <div class="gallery-item">
-                <img src="https://ceccojjvzimljcdltjxy.supabase.co/storage/v1/object/public/ai-generated-images/website-images/Generated%20Image%20September%2003,%202025%20-%205_08PM.jpeg" alt="AI Generated Character">
+                <img src="https://ceccojjvzimljcdltjxy.supabase.co/storage/v1/object/public/ai-generated-images/website-images/Generated%20Image%20September%2003,%202025%20-%205_08PM.jpeg" alt="AI Generated Character - Professional Woman">
             </div>
             <div class="gallery-item">
-                <img src="https://ceccojjvzimljcdltjxy.supabase.co/storage/v1/object/public/ai-generated-images/website-images/Generated%20Image%20September%2003,%202025%20-%205_06PM.jpeg" alt="AI Generated Character">
+                <img src="https://ceccojjvzimljcdltjxy.supabase.co/storage/v1/object/public/ai-generated-images/website-images/Generated%20Image%20September%2003,%202025%20-%205_06PM.jpeg" alt="AI Generated Character - Business Professional">
             </div>
             <div class="gallery-item">
-                <img src="https://ceccojjvzimljcdltjxy.supabase.co/storage/v1/object/public/ai-generated-images/website-images/Generated%20Image%20September%2003,%202025%20-%205_09PM.jpeg" alt="AI Generated Character">
+                <img src="https://ceccojjvzimljcdltjxy.supabase.co/storage/v1/object/public/ai-generated-images/website-images/Generated%20Image%20September%2003,%202025%20-%205_09PM.jpeg" alt="AI Generated Character - Creative Professional">
             </div>
             <div class="gallery-item">
-                <img src="https://ceccojjvzimljcdltjxy.supabase.co/storage/v1/object/public/ai-generated-images/website-images/Generated%20Image%20September%2003,%202025%20-%204_59PM.jpeg" alt="AI Generated Character">
+                <img src="https://ceccojjvzimljcdltjxy.supabase.co/storage/v1/object/public/ai-generated-images/website-images/Generated%20Image%20September%2003,%202025%20-%204_59PM.jpeg" alt="AI Generated Character - Young Professional">
             </div>
         </div>
     </div>
 
     <div class="gallery-section">
-        <h2 class="section-title">Videos</h2>
+        <h2 class="section-title">Cinematic Scenes</h2>
+        <p class="section-subtitle">Set your story in any location, from boardrooms to beaches</p>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="https://ceccojjvzimljcdltjxy.supabase.co/storage/v1/object/public/ai-generated-images/website-images/scene_1_frame1.jpg" alt="AI Generated Scene - Modern Office">
+            </div>
+            <div class="gallery-item">
+                <img src="https://ceccojjvzimljcdltjxy.supabase.co/storage/v1/object/public/ai-generated-images/website-images/scene_2_frame1.jpg" alt="AI Generated Scene - Urban Environment">
+            </div>
+            <div class="gallery-item">
+                <img src="https://ceccojjvzimljcdltjxy.supabase.co/storage/v1/object/public/ai-generated-images/website-images/edited_video_1756032274_frame1.jpg" alt="AI Generated Scene - Creative Space">
+            </div>
+        </div>
+    </div>
+
+    <div class="gallery-section">
+        <h2 class="section-title">Video Examples</h2>
+        <p class="section-subtitle">See the quality and storytelling power of AI-generated videos</p>
         <div class="video-gallery-container">
             <div class="video-item">
                 <video controls preload="metadata">
@@ -394,13 +717,86 @@
                     Your browser does not support the video tag.
                 </video>
             </div>
+            <!-- Add more video items here as needed -->
         </div>
     </div>
 
     <section class="final-cta" id="waitlist">
-        <h2 class="final-cta-title">Ready to Create?</h2>
-        <p class="final-cta-text">Be among the first to experience the future of AI-powered video creation. Join our waitlist and get early access to Pocket Hollywood.</p>
-        <a href="#" class="cta-button">Join Waitlist</a>
+        <h2 class="final-cta-title">Ready to Transform Your Video Creation?</h2>
+        <p class="final-cta-text">Join thousands of creators, marketers, and businesses already on our waitlist. Be among the first to access the future of video production.</p>
+        <a href="#" class="cta-button" onclick="openModal()">Get Early Access</a>
     </section>
-</body>
-</html>
+
+    <!-- Modal -->
+    <div id="waitlistModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 class="modal-title">Join the Waitlist</h2>
+            <p class="modal-subtitle">Be the first to experience AI-powered video creation</p>
+            
+            <form id="waitlistForm">
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="appeal">What will you use Pocket Hollywood for? *</label>
+                    <select id="appeal" name="appeal" required>
+                        <option value="">Select your primary use case</option>
+                        <option value="Product Marketing Videos">Product Marketing Videos</option>
+                        <option value="Social Media Content">Social Media Content</option>
+                        <option value="Brand Storytelling">Brand Storytelling</option>
+                        <option value="Educational Content">Educational Content</option>
+                        <option value="E-commerce Product Demos">E-commerce Product Demos</option>
+                        <option value="Corporate Communications">Corporate Communications</option>
+                        <option value="Creative Projects">Creative Projects</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="submit-button" id="submitBtn">Join Waitlist</button>
+                
+                <div class="success-message" id="successMessage">
+                    🎉 You're on the list! We'll notify you when early access opens.
+                </div>
+                
+                <div class="error-message" id="errorMessage">
+                    Something went wrong. Please try again.
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/supabase/2.39.0/supabase.min.js"></script>
+    <script>
+        // Supabase configuration
+        const SUPABASE_URL = 'https://ceccojjvzimljcdltjxy.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNlY2Nvamp2emltbGpjZGx0anh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI2MTQyODksImV4cCI6MjA2ODE5MDI4OX0.rDgh2V46RnqpD7A92VEwfQC-4SzVindxQKHYwDCPNvE';
+        
+        const { createClient } = supabase;
+        const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // Modal functionality
+        function openModal() {
+            document.getElementById('waitlistModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('waitlistModal').style.display = 'none';
+            resetForm();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('waitlistModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Form handling
+        document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementByI
