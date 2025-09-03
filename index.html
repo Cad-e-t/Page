@@ -152,20 +152,13 @@
         }
 
         .gallery-container {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
-            overflow-x: auto;
             padding: 1rem 0;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-
-        .gallery-container::-webkit-scrollbar {
-            display: none;
         }
 
         .gallery-item {
-            min-width: 300px;
             height: 200px;
             border-radius: 12px;
             overflow: hidden;
@@ -180,14 +173,14 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
-        .gallery-item img, .gallery-item video {
+        .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.4s ease;
         }
 
-        .gallery-item:hover img, .gallery-item:hover video {
+        .gallery-item:hover img {
             transform: scale(1.1);
         }
 
@@ -207,9 +200,77 @@
             opacity: 1;
         }
 
+        /* Video specific styles */
+        .video-gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            padding: 1rem 0;
+        }
+
         .video-item {
-            min-width: 400px;
             height: 250px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(45deg, #2c2c54, #40407a);
+        }
+
+        .video-item:hover {
+            transform: scale(1.02) translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .video-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .video-controls {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-item:hover .video-controls {
+            opacity: 1;
+        }
+
+        .play-button {
+            background: #ff4757;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            padding: 0.3rem 0.6rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: background 0.3s ease;
+        }
+
+        .play-button:hover {
+            background: #ff3838;
+        }
+
+        .volume-button {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+            padding: 0.2rem;
         }
 
         .final-cta {
@@ -258,13 +319,19 @@
         }
 
         @media (max-width: 768px) {
+            .gallery-container {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .video-gallery-container {
+                grid-template-columns: 1fr;
+            }
+
             .gallery-item {
-                min-width: 250px;
                 height: 180px;
             }
 
             .video-item {
-                min-width: 320px;
                 height: 200px;
             }
 
@@ -279,6 +346,16 @@
 
             .final-cta-title {
                 font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item {
+                height: 160px;
             }
         }
     </style>
@@ -318,17 +395,18 @@
                 <img src="https://ceccojjvzimljcdltjxy.supabase.co/storage/v1/object/public/ai-generated-images/scene_2_frame1.jpg" alt="AI Generated Scene">
             </div>
             <div class="gallery-item">
-                <img src=https://ceccojjvzimljcdltjxy.supabase.co/storage/v1/object/public/ai-generated-images/edited_video_1756032274_frame1.jpg" alt="AI Generated Scene">
+                <img src="https://ceccojjvzimljcdltjxy.supabase.co/storage/v1/object/public/ai-generated-images/edited_video_1756032274_frame1.jpg" alt="AI Generated Scene">
             </div>
         </div>
     </div>
 
     <div class="gallery-section">
         <h2 class="section-title">Videos</h2>
-        <div class="gallery-container">
-            <div class="gallery-item video-item">
-                <video autoplay muted loop>
+        <div class="video-gallery-container">
+            <div class="video-item">
+                <video controls preload="metadata">
                     <source src="https://ceccojjvzimljcdltjxy.supabase.co/storage/v1/object/public/ai-generated-images/Untitled%20design%20(1).mp4" type="video/mp4">
+                    Your browser does not support the video tag.
                 </video>
             </div>
         </div>
